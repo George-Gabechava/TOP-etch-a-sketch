@@ -19,24 +19,26 @@ document.getElementById("square").style.height = "10px";
 */
 
 // Making a grid and then inserting square elements
-let gridSize =10;
 
 let mygrid = document.querySelector('.mygrid');
-mygrid.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
-mygrid.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
 
-for (let x=1; x<=gridSize; x++) {
-    y = 1;
-    for (let y=1; y<=gridSize; y++) {
-        //console.log('y loopp',x,y);
-        
-        const cell = document.createElement("div");
-        cell.classList.add('cell')
-        mygrid.appendChild(cell);
+function makeGrid(gridSize) {
+    mygrid.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
+    mygrid.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+    for (let x=1; x<=gridSize; x++) {
+        y = 1;
+        for (let y=1; y<=gridSize; y++) {
+            //console.log('y loopp',x,y);
+            
+            const cell = document.createElement("div");
+            cell.classList.add('cell')
+            mygrid.appendChild(cell);
 
+        }
     }
 }
 
+//Fill in squares that are hovered over.
 cell.addEventListener("mouseenter", function( event ) {   
     //event.target.style.backgroundColor = "purple";
     cell.classList.add('cellHover');
@@ -50,3 +52,19 @@ onmouseover = (event) => {
     event.target.classList.add('cellHover');
     }
 };
+
+// Clear grid and make a new one (respecting max size)
+function resetPrompt() {
+    newGridsize = Number(prompt("How many buttons do you want per side? (Max. 100)"));
+    if (newGridsize > 100) {
+        return alert("The maximum grid size is 100x100");
+    }
+    mygrid.remove();
+    //document.body.appendChild(makeGrid(3));
+    //mygrid.createElement();
+    //let mygrid = document.querySelector('.mygrid');
+    mynewgrid = makeGrid(newGridsize);
+    document.body.append(mynewgrid);
+}
+
+makeGrid(10);
