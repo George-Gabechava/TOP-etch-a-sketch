@@ -60,9 +60,6 @@ function resetPrompt() {
         return alert("The maximum grid size is 100x100");
     }
     mygrid.remove();
-    //document.body.appendChild(makeGrid(3));
-    //mygrid.createElement();
-    //let mygrid = document.querySelector('.mygrid');
     mynewgrid = makeGrid(newGridsize);
     document.body.append(mynewgrid);
 }
