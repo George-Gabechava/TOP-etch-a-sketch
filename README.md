@@ -1,5 +1,5 @@
 <!-- 
-Create a 16x16 grdi etch-a-sketch
+Create a 33x33 grid etch-a-sketch
 
 Author: George Gabechava
 -->
